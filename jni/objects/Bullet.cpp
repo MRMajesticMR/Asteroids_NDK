@@ -8,6 +8,16 @@
 #include "headers/Bullet.h"
 
 
+Bullet::Bullet()
+{
+
+}
+
+Bullet::~Bullet()
+{
+
+}
+
 void Bullet::update()
 {
 

@@ -15,6 +15,8 @@ class Bullet : public MoveableGameObject
 private:
 
 public:
+	Bullet		();
+	~Bullet		();
 
 	void update		();
 	void draw		();
