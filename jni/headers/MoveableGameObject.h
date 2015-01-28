@@ -22,7 +22,7 @@ public:
 	MoveableGameObject(float width, float height, float speed, float dir_x, float dir_y);					//x = 0, y = 0;
 	MoveableGameObject(float width, float height);															//x = 0, y = 0, speed = 0, dir_x = 0, dir_y = 0
 
-	virtual ~MoveableGameObject() = 0;
+	virtual ~MoveableGameObject();
 
 	float get_speed		();
 	float get_dir_x		();

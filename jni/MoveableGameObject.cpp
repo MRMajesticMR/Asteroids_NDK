@@ -28,6 +28,11 @@ MoveableGameObject::MoveableGameObject(float width, float height) : GameObject(w
 	this->dir_y 	= 1.0f;
 }
 
+MoveableGameObject::~MoveableGameObject()
+{
+	//EMPTY
+}
+
 float MoveableGameObject::get_speed()
 {
 	return speed;

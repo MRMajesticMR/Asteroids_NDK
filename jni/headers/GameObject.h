@@ -21,7 +21,7 @@ public:
 	GameObject(float x, float y, float width, float height);
 	GameObject(float width, float height); 						//x = 0; y = 0;
 
-	virtual ~GameObject() = 0;
+	virtual ~GameObject();
 
 	float get_x			();
 	float get_y			();

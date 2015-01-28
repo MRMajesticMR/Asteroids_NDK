@@ -25,6 +25,11 @@ GameObject::GameObject(float width, float height)
 	this->height 	= height;
 }
 
+GameObject::~GameObject()
+{
+	//EMPTY
+}
+
 float GameObject::get_x()
 {
 	return x;
