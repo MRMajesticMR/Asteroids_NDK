@@ -57,4 +57,3 @@ void MoveableGameObject::set_dir_y(float dir_y)
 {
 	this->dir_y = dir_y;
 }
-
