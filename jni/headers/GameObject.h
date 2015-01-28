@@ -19,7 +19,7 @@ protected:
 
 public:
 	GameObject(float x, float y, float width, float height);
-	GameObject(float width, float height); //x = 0; y = 0;
+	GameObject(float width, float height); 						//x = 0; y = 0;
 
 	float get_x			();
 	float get_y			();
@@ -30,7 +30,6 @@ public:
 	void set_y			(float x);
 	void set_width		(float x);
 	void set_height		(float x);
-
 };
 
 
