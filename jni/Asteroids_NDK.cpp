@@ -23,14 +23,16 @@ static void checkGlError(const char* op) {
 	}
 }
 
-static const char gVertexShader[] = "attribute vec4 vPosition;\n"
+static const char gVertexShader[] =
+		"attribute vec4 vPosition;\n"
 		"void main() {\n"
 		"  gl_Position = vPosition;\n"
 		"}\n";
 
-static const char gFragmentShader[] = "precision mediump float;\n"
+static const char gFragmentShader[] =
+		"precision mediump float;\n"
 		"void main() {\n"
-		"  gl_FragColor = vec4(0.0, 1.0, 0.0, 1.0);\n"
+		"  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n"
 		"}\n";
 
 GLuint loadShader(GLenum shaderType, const char* pSource) {
@@ -128,16 +130,14 @@ void renderFrame() {
 	if (grey > 1.0f) {
 		grey = 0.0f;
 	}
+
 	glClearColor(grey, grey, grey, 1.0f);
 	checkGlError("glClearColor");
 	glClear( GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 	checkGlError("glClear");
-
 	glUseProgram(gProgram);
 	checkGlError("glUseProgram");
-
-	glVertexAttribPointer(gvPositionHandle, 2, GL_FLOAT, GL_FALSE, 0,
-			gTriangleVertices);
+	glVertexAttribPointer(gvPositionHandle, 2, GL_FLOAT, GL_FALSE, 0, gTriangleVertices);
 	checkGlError("glVertexAttribPointer");
 	glEnableVertexAttribArray(gvPositionHandle);
 	checkGlError("glEnableVertexAttribArray");
@@ -146,19 +146,14 @@ void renderFrame() {
 }
 
 extern "C" {
-JNIEXPORT void JNICALL Java_ru_majestic_asteroids_GL2JNILib_init(JNIEnv * env,
-		jobject obj, jint width, jint height);
-JNIEXPORT void JNICALL Java_ru_majestic_asteroids_GL2JNILib_step(JNIEnv * env,
-		jobject obj);
-}
-;
+	JNIEXPORT void JNICALL Java_ru_majestic_asteroids_GL2JNILib_init(JNIEnv * env, jobject obj, jint width, jint height);
+	JNIEXPORT void JNICALL Java_ru_majestic_asteroids_GL2JNILib_step(JNIEnv * env, jobject obj);
+};
 
-JNIEXPORT void JNICALL Java_ru_majestic_asteroids_GL2JNILib_init(JNIEnv * env,
-		jobject obj, jint width, jint height) {
+JNIEXPORT void JNICALL Java_ru_majestic_asteroids_GL2JNILib_init(JNIEnv * env, jobject obj, jint width, jint height) {
 	setupGraphics(width, height);
 }
 
-JNIEXPORT void JNICALL Java_ru_majestic_asteroids_GL2JNILib_step(JNIEnv * env,
-		jobject obj) {
+JNIEXPORT void JNICALL Java_ru_majestic_asteroids_GL2JNILib_step(JNIEnv * env, jobject obj) {
 	renderFrame();
 }
