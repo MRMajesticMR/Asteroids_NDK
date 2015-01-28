@@ -8,7 +8,7 @@
 #include "headers/Bullet.h"
 
 
-Bullet::Bullet()
+Bullet::Bullet(float x, float y) : MoveableGameObject(x, y, 1, 10, 10, 0, -1)
 {
 
 }
