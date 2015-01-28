@@ -33,7 +33,8 @@ public:
 	void set_width		(float x);
 	void set_height		(float x);
 
-	virtual void draw() = 0;
+	virtual void draw				() = 0;
+	virtual void check_collision	(GameObject* game_object) = 0;
 };
 
 
