@@ -33,9 +33,7 @@ class GL2JNIView extends GLSurfaceView {
 
 			int[] attrib_list = { EGL_CONTEXT_CLIENT_VERSION, 2, EGL10.EGL_NONE };
 
-			EGLContext context = egl.eglCreateContext(display, eglConfig, EGL10.EGL_NO_CONTEXT, attrib_list);
-
-			return context;
+			return egl.eglCreateContext(display, eglConfig, EGL10.EGL_NO_CONTEXT, attrib_list);
 		}
 
 		public void destroyContext(EGL10 egl, EGLDisplay display, EGLContext context) {

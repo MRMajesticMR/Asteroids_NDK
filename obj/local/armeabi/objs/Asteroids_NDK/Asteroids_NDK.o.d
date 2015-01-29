@@ -35,7 +35,9 @@ obj/local/armeabi/objs/Asteroids_NDK/Asteroids_NDK.o: \
  C:/android-ndk/platforms/android-19/arch-arm/usr/include/machine/internal_types.h \
  C:/android-ndk/platforms/android-19/arch-arm/usr/include/machine/limits.h \
  C:/android-ndk/platforms/android-19/arch-arm/usr/include/sys/syslimits.h \
- C:/android-ndk/platforms/android-19/arch-arm/usr/include/asm/page.h
+ C:/android-ndk/platforms/android-19/arch-arm/usr/include/asm/page.h \
+ jni/objects/headers/Ship.h jni/objects/headers/MoveableGameObject.h \
+ jni/objects/headers/GameObject.h
 
 C:/android-ndk/platforms/android-19/arch-arm/usr/include/jni.h:
 
@@ -108,3 +110,9 @@ C:/android-ndk/platforms/android-19/arch-arm/usr/include/machine/limits.h:
 C:/android-ndk/platforms/android-19/arch-arm/usr/include/sys/syslimits.h:
 
 C:/android-ndk/platforms/android-19/arch-arm/usr/include/asm/page.h:
+
+jni/objects/headers/Ship.h:
+
+jni/objects/headers/MoveableGameObject.h:
+
+jni/objects/headers/GameObject.h:

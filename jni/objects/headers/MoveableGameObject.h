@@ -8,6 +8,8 @@
 #ifndef HEADERS_MOVEABLEGAMEOBJECT_H_
 #define HEADERS_MOVEABLEGAMEOBJECT_H_
 
+#include <GLES2/gl2.h>
+
 #include "GameObject.h"
 
 class MoveableGameObject : public GameObject
@@ -32,7 +34,7 @@ public:
 	void set_dir_x		(float dir_x);
 	void set_dir_y		(float dir_y);
 
-	virtual void draw	() = 0;
+	virtual void draw	(GLuint program) = 0;
 	virtual void update	() = 0;
 };
 

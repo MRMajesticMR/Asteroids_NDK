@@ -8,6 +8,8 @@
 #ifndef HEADERS_GAMEOBJECT_H_
 #define HEADERS_GAMEOBJECT_H_
 
+#include <GLES2/gl2.h>
+
 class GameObject
 {
 
@@ -33,7 +35,7 @@ public:
 	void set_width		(float x);
 	void set_height		(float x);
 
-	virtual void draw				() = 0;
+	virtual void draw				(GLuint program) = 0;
 	virtual void check_collision	(GameObject* game_object) = 0;
 };
 

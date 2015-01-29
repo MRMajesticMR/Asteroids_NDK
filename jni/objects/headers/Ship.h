@@ -8,6 +8,8 @@
 #ifndef HEADERS_SHIP_H_
 #define HEADERS_SHIP_H_
 
+#include <GLES2/gl2.h>
+
 #include "MoveableGameObject.h"
 
 class Ship : public MoveableGameObject
@@ -16,13 +18,14 @@ private:
 
 
 public:
-	Ship		();
-	~Ship		();
+	Ship					(float x, float y);
+	~Ship					();
 
-	void fire	();
+	void fire				();
 
-	void draw	();
-	void update	();
+	void draw				(GLuint program);
+	void update				();
+	void check_collision	(GameObject* game_object);
 };
 
 
