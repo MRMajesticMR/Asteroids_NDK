@@ -102,17 +102,20 @@ GLuint gProgram;
 GLuint gvPositionHandle;
 
 bool setupGraphics(int w, int h) {
-	printGLString("Version", GL_VERSION);
-	printGLString("Vendor", GL_VENDOR);
-	printGLString("Renderer", GL_RENDERER);
-	printGLString("Extensions", GL_EXTENSIONS);
+	printGLString("Version", 		GL_VERSION);
+	printGLString("Vendor", 		GL_VENDOR);
+	printGLString("Renderer", 		GL_RENDERER);
+	printGLString("Extensions", 	GL_EXTENSIONS);
 
 	LOGI("setupGraphics(%d, %d)", w, h);
+
 	gProgram = createProgram(gVertexShader, gFragmentShader);
+
 	if (!gProgram) {
 		LOGE("Could not create program.");
 		return false;
 	}
+
 	gvPositionHandle = glGetAttribLocation(gProgram, "vPosition");
 	checkGlError("glGetAttribLocation");
 	LOGI("glGetAttribLocation(\"vPosition\") = %d\n", gvPositionHandle);
