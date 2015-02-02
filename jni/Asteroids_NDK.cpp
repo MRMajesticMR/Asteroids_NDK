@@ -14,6 +14,8 @@
 #define  LOGI(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
 #define  LOGE(...)  __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
 
+#define VIEW_SCALE_FACTOR 1.6f
+
 static void checkGlError(const char* op) {
 	for (GLint error = glGetError(); error; error = glGetError()) {
 		LOGI("after %s() glError (0x%x)\n", op, error);
@@ -22,8 +24,30 @@ static void checkGlError(const char* op) {
 
 static const char gVertexShader[] =
 		"attribute vec4 vPosition;\n"
+		"attribute vec4 vRotation;\n"
+		"attribute float angle;\n"
+		"attribute float view_scale_factor;\n"
 		"void main() {\n"
-		"  gl_Position = vPosition;\n"
+		"  float PI = 3.14159265358979323846264;\n"
+		"  float rad_angle = angle*PI/180.0;\n"
+		"  mat4 view_translation = mat4(\n"
+		"   vec4(1.0, 0.0, 0.0, 0.0),\n"
+		"   vec4(0.0, 1.0, 0.0, -2.1),\n"
+		"   vec4(0.0, 0.0, 1.0, 0.0),\n"
+		"   vec4(0.0, 0.0, 0.0, 1.0)\n"
+		"    );"
+		"  mat4 view_scale = mat4(\n"
+		"   vec4(0.3 * view_scale_factor, 	0.0, 						0.0, 0.0),\n"
+		"   vec4(0.0, 						0.3,					 	0.0, 0.0),\n"
+		"   vec4(0.0, 						0.0, 						1.0, 0.0),\n"
+		"   vec4(0.0, 						0.0, 						0.0, 1.0)\n"
+		"    );"
+		"  vec4 a = vPosition;\n"
+		"  vec4 b = a;\n"
+		"  b.x = a.x*cos(rad_angle) - a.y*sin(rad_angle);\n"
+		"  b.y = a.y*cos(rad_angle) + a.x*sin(rad_angle);\n"
+		"  b.z = 1.0f;\n"
+		"  gl_Position = b * view_translation * view_scale;\n"
 		"}\n";
 
 static const char gFragmentShader[] =
@@ -96,7 +120,6 @@ GLuint createProgram(const char* pVertexSource, const char* pFragmentSource) {
 }
 
 GLuint gProgram;
-//GLuint gvPositionHandle;
 
 bool setupGraphics(int w, int h) {
 	gProgram = createProgram(gVertexShader, gFragmentShader);
@@ -134,6 +157,9 @@ void renderFrame()
 
 	glUseProgram(gProgram);
 	checkGlError("glUseProgram");
+
+	GLuint view_scale_factor_attrib 	= glGetAttribLocation(gProgram, "view_scale_factor");
+	glVertexAttrib1f(view_scale_factor_attrib, VIEW_SCALE_FACTOR);
 
 	player_ship->draw(gProgram);
 }
